@@ -52,37 +52,38 @@ export default function Register() {
                     </Link>
                 </section>
                 <form onSubmit={HandleRegister}>
-                    <input
+                    <InputMask
                         placeholder="Nome da ONG"
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
-                    <input
+                    <InputMask
                         type="email" 
                         placeholder="E-mail"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         />
-                    <input
-                        placeholder="Whatsapp"
-                        type="number"
+                    <InputMask
+                        placeholder="Telefone"
+                        type="text"
+                        mask="(99)99999-9999"
                         value={whatsapp}
                         onChange={e => setWhatsapp(e.target.value)}
                         />
                     <div className="input-group">
-                        <input
+                        <InputMask
                             placeholder="Cidade"
                             value={city}
                             onChange={e => setCity(e.target.value)}
                         />
-                        <input
+                        <InputMask
                             placeholder="UF"
+                            maxlength="2"
                             style={{ width: 80 }}
                             value={uf}
                             onChange={e => setUf(e.target.value)}
                         />
                     </div>
-
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>
