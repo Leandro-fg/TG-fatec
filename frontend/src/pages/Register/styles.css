@@ -43,3 +43,21 @@
 .container-register .content form .input-group input + input {
     margin-left: 8px;
 } 
+
+@media (max-width: 768px) {
+    .container-register .content {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .container-register section {
+        width: 100%;
+        max-width: 443px;
+        text-align: center;
+    }
+    .container-register section img {
+        margin-top: 10px;
+    }
+    .container-register form {
+        width: 100%;
+    }
+}
