@@ -4,12 +4,18 @@ import Api from '../../services/api';
 import { FiArrowLeft } from 'react-icons/fi';
 import './styles.css';
 import Logo from '../../assets/logo.svg';
+import moment from 'moment';
 
 export default function Newincident() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [value, setValue] = useState('');
+    const [dataFinal, setDataFinal] = useState('');
+    const [checkbox, setCheckbox] = useState(false);
+  /*   const [endDate, setEndDate] = useState('')*/
 
+    const dataCaso = new Date().toLocaleDateString()
+    console.log(dataCaso)
     const ongId = localStorage.getItem('ongID');
 
     const history = useHistory();
@@ -36,6 +42,11 @@ export default function Newincident() {
             alert('erro ao criar um novo caso, tente novamente.')
         }
     }
+    let newDataFinal 
+    if (dataFinal !== '') {
+        newDataFinal = moment(dataFinal).format('L')
+        console.log(newDataFinal)
+    }
 
     return (
         <div className="container-new-incident">
@@ -49,7 +60,7 @@ export default function Newincident() {
                     <Link className="back-link" to="/profile">
                         <FiArrowLeft size={16} color='#00cc66' />
                         Voltar para home
-                    </Link>
+                    </Link> 
                 </section>
                 <form onSubmit={HandleNewIncident}>
                     <input
@@ -67,7 +78,21 @@ export default function Newincident() {
                         value={value}
                         onChange={e => setValue(e.target.value)}
                     />
-
+                    <div className="checboxContainer" >
+                        <span >Deseja definir uma data final?</span>
+                        <input 
+                            type="checkbox"
+                            onChange={e => setCheckbox(!checkbox)}
+                        />
+                    </div>
+                    {checkbox ? 
+                    <input
+                        type="date"
+                        placeholder="Data final"
+                        value={dataFinal}
+                        onChange={e => setDataFinal(e.target.value)}
+                    />
+                    : null }                  
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>
