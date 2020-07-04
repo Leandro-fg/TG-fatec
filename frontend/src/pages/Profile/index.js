@@ -41,7 +41,7 @@ export default function Profile() {
 
         history.push('/'); 
     }
-
+    
     return (
         <div className="container-profile">
             <header>
@@ -67,6 +67,12 @@ export default function Profile() {
 
                         <strong>VALOR:</strong>
                         <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incident.value)}</p>
+
+                        <strong>DATA INICIAL:</strong>
+                        <p>{(incident.creation_date)}</p>
+
+                        <strong>DATA FINAL:</strong>
+                        <p>{(incident.date)}</p>
 
                         <button onClick={() => handleDeleteIncident(incident.id)} type="button">
                             <FiTrash2 size={20} color="#a8a8b3" />

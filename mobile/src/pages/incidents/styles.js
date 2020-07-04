@@ -60,5 +60,12 @@ export default StyleSheet.create({
         color: '#00cc66',
         fontSize: 15,
         fontWeight: '700'
+    },
+    textInput: {
+        height: 30,
+        borderWidth:1,
+        borderColor: '#cecece',
+        marginBottom:15,
+        marginHorizontal:10
     }
 })

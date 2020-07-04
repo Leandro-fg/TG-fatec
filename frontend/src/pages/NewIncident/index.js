@@ -9,6 +9,8 @@ export default function Newincident() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [value, setValue] = useState('');
+    const [creation_date, setCreation] = useState('');
+    const [date, setDate] = useState('');
 
     const ongId = localStorage.getItem('ongID');
 
@@ -23,6 +25,8 @@ export default function Newincident() {
             title,
             description,
             value,
+            creation_date,
+            date
         };
 
         try {
@@ -67,6 +71,21 @@ export default function Newincident() {
                         value={value}
                         onChange={e => setValue(e.target.value)}
                     />
+                    <div className="checboxContainer" >
+                        <span >Deseja definir uma data final?</span>
+                        <input 
+                            type="checkbox"
+                            onChange={e => setCheckbox(!checkbox)}
+                        />
+                    </div>
+                    {checkbox ? 
+                    <input
+                        type="date"
+                        placeholder="Data final"
+                        value={dataFinal}
+                        onChange={e => setDate(e.target.value)}
+                    />
+                    : null }   
 
                     <button className="button" type="submit">Cadastrar</button>
                 </form>

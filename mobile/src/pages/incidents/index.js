@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Api from '../../services/api';
-import { View, Image, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Image, Text, TouchableOpacity, FlatList, TextInput } from 'react-native';
 import logoImg from '../../assets/logo.png';
 import styles from './styles';
 
@@ -23,7 +23,7 @@ export default function Incidents() {
             return;
         }
 
-        if(total > 0 && incidents.length === total) {
+        if (total > 0 && incidents.length === total) {
             return;
         }
 
@@ -34,16 +34,16 @@ export default function Incidents() {
             params: { page }
         });
 
-            setIncidents([...incidents, ...res.data]);
-            setTotal(res.headers['x-total-count']);
-            setPage(page + 1);
-            setLoading(false);
+        setIncidents([...incidents, ...res.data]);
+        setTotal(res.headers['x-total-count']);
+        setPage(page + 1);
+        setLoading(false);
     }
 
     useEffect(() => {
         loadIncidents();
     }, [])
-
+    
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -52,6 +52,7 @@ export default function Incidents() {
                     Total de <Text style={styles.headerTextBold}>{total} casos</Text>
                 </Text>
             </View>
+
 
             <Text style={styles.title}>Bem-vindo!</Text>
             <Text style={styles.description}>Escolha um dos casos abaixo e salve o dia.</Text>
@@ -64,7 +65,18 @@ export default function Incidents() {
                 onEndReached={loadIncidents}
                 onEndReachedThreshold={0.2}
                 renderItem={({ item: incident }) => (
+
                     <View style={styles.incident}>
+                        <TextInput
+                            style={styles.textInput}
+                            onChangeText={() => navigateToDetail(incident.title)}
+                            
+                        />
+                        <TouchableOpacity
+                        onPress={() => navigateToDetail(incident.date)} 
+                        style={styles.loadButton}>
+                        <Text>go</Text>
+                        </TouchableOpacity >
                         <Text style={styles.incidentProperty}>ONG:</Text>
                         <Text style={styles.incidentValue}>{incident.name}</Text>
 
@@ -77,6 +89,14 @@ export default function Incidents() {
                                 style: 'currency',
                                 currency: 'BRL'
                             }).format(incident.value)}
+                        </Text>
+                        <Text style={styles.incidentProperty}> DATA INICIAL</Text>
+                        <Text style={styles.incidentValue}>
+                            {(incident.creation_date)}
+                        </Text>
+                        <Text style={styles.incidentProperty}>DATA FINAL</Text>
+                        <Text style={styles.incidentValue}>
+                            {(incident.date)}
                         </Text>
 
                         <TouchableOpacity

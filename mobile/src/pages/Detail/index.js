@@ -53,6 +53,14 @@ export default function Detail() {
                         currency: 'BRL'
                     }).format(incident.value)}
                 </Text>
+                <Text style={styles.incidentProperty}>DATA INICIAL:</Text>
+                <Text style={styles.incidentValue}>
+                {(incident.creation_date)}
+                </Text>
+                <Text style={styles.incidentProperty}>DATA FINAL:</Text>
+                <Text style={styles.incidentValue}>
+                {(incident.date)}
+                </Text>
             </View>
 
             <View style={styles.contactBox}>

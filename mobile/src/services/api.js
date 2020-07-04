@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Api = axios.create({
-    baseURL: "https://fatec-backend.herokuapp.com"
+    baseURL: "http://10.0.0.103:3333"
 });
 
 export default Api;
