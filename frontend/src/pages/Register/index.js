@@ -63,8 +63,8 @@ export default function Register() {
                         onChange={e => setEmail(e.target.value)}
                         />
                     <input
-                        placeholder="Whatsapp"
-                        type="number"
+                        placeholder="Telefone"
+                        type="text"
                         value={whatsapp}
                         onChange={e => setWhatsapp(e.target.value)}
                         />
@@ -76,6 +76,7 @@ export default function Register() {
                         />
                         <input
                             placeholder="UF"
+                            maxlength="2"
                             style={{ width: 80 }}
                             value={uf}
                             onChange={e => setUf(e.target.value)}

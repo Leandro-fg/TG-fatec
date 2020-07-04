@@ -38,3 +38,26 @@
 .container-new-incident .content form textarea {
     margin-top: 8px;
 }
+.checboxContainer {
+    display: flex;
+    align-items: center;
+}
+.checboxContainer > span {
+    color: #000000;
+    font-size: 20px;
+    width: 100%;
+}
+.checboxContainer > input {
+    width: 40px;
+    margin-right: 12px;
+    margin-top: 0;
+}
+.checboxContainer > input:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .container-new-incident .content {
+        flex-flow: row wrap;
+    }
+}  

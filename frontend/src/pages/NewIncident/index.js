@@ -4,6 +4,7 @@ import Api from '../../services/api';
 import { FiArrowLeft } from 'react-icons/fi';
 import './styles.css';
 import Logo from '../../assets/logo.svg';
+import moment from 'moment';
 
 export default function Newincident() {
     const [title, setTitle] = useState('');
@@ -11,7 +12,12 @@ export default function Newincident() {
     const [value, setValue] = useState('');
     const [creation_date, setCreation] = useState('');
     const [date, setDate] = useState('');
+    const [dataFinal, setDataFinal] = useState('');
+    const [checkbox, setCheckbox] = useState(false);
+  /*   const [endDate, setEndDate] = useState('')*/
 
+    const dataCaso = new Date().toLocaleDateString()
+    console.log(dataCaso)
     const ongId = localStorage.getItem('ongID');
 
     const history = useHistory();
@@ -40,6 +46,11 @@ export default function Newincident() {
             alert('erro ao criar um novo caso, tente novamente.')
         }
     }
+    let newDataFinal 
+    if (dataFinal !== '') {
+        newDataFinal = moment(dataFinal).format('L')
+        console.log(newDataFinal)
+    }
 
     return (
         <div className="container-new-incident">
@@ -53,7 +64,7 @@ export default function Newincident() {
                     <Link className="back-link" to="/profile">
                         <FiArrowLeft size={16} color='#00cc66' />
                         Voltar para home
-                    </Link>
+                    </Link> 
                 </section>
                 <form onSubmit={HandleNewIncident}>
                     <input
@@ -83,10 +94,9 @@ export default function Newincident() {
                         type="date"
                         placeholder="Data final"
                         value={dataFinal}
-                        onChange={e => setDate(e.target.value)}
+                        onChange={e => setDataFinal(e.target.value)}
                     />
-                    : null }   
-
+                    : null }                  
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>
