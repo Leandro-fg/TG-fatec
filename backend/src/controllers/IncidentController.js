@@ -1,4 +1,5 @@
 const connection = require('../database/connection');
+const moment = require('moment')
 
 module.exports = {
     async index(req, res) {
@@ -26,15 +27,18 @@ module.exports = {
     },
 
     async create(req, res) {
-        const { title, description, value, creation_date, date } = req.body;
+        const { title, description, value, created_at, date } = req.body;
         const ong_id = req.headers.authorization;
+
+        const creationDate = moment().locale('pt').format('L');
+        const endDate = moment(date).locale('pt').format('L');
 
         const [id] = await connection('incidents').insert({
             title,
             description,
             value,
-            creation_date,
-            date,
+            created_at: creationDate,
+            date:endDate,
             ong_id
         });
 

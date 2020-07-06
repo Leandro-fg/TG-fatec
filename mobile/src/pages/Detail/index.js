@@ -55,11 +55,11 @@ export default function Detail() {
                 </Text>
                 <Text style={styles.incidentProperty}>DATA INICIAL:</Text>
                 <Text style={styles.incidentValue}>
-                {(incident.creation_date)}
+                    {(incident.created_at)}
                 </Text>
                 <Text style={styles.incidentProperty}>DATA FINAL:</Text>
                 <Text style={styles.incidentValue}>
-                {(incident.date)}
+                    {(incident.date)}
                 </Text>
             </View>
 

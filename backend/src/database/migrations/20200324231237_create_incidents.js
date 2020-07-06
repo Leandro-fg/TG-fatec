@@ -5,9 +5,8 @@ exports.up = function (knex) {
         table.string('title').notNullable();
         table.string('description').notNullable();
         table.decimal('value').notNullable();
-        table.dateTime('creation_date').notNullable().defaultTo(knex.fn.now());
+        table.timestamp('created_at');
         table.date('date').notNullable();
-
         table.string('ong_id').notNullable();
 
         table.foreign('ong_id').references('id').inTable('ongs')
