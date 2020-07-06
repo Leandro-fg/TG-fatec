@@ -4,18 +4,15 @@ import Api from '../../services/api';
 import { FiArrowLeft } from 'react-icons/fi';
 import './styles.css';
 import Logo from '../../assets/logo.svg';
-import moment from 'moment';
 
 export default function Newincident() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [value, setValue] = useState('');
-    const [dataFinal, setDataFinal] = useState('');
+    const [date, setDate] = useState('');
     const [checkbox, setCheckbox] = useState(false);
-  /*   const [endDate, setEndDate] = useState('')*/
 
-    const dataCaso = new Date().toLocaleDateString()
-    console.log(dataCaso)
+    
     const ongId = localStorage.getItem('ongID');
 
     const history = useHistory();
@@ -29,6 +26,7 @@ export default function Newincident() {
             title,
             description,
             value,
+            date
         };
 
         try {
@@ -41,11 +39,6 @@ export default function Newincident() {
         } catch (err) {
             alert('erro ao criar um novo caso, tente novamente.')
         }
-    }
-    let newDataFinal 
-    if (dataFinal !== '') {
-        newDataFinal = moment(dataFinal).format('L')
-        console.log(newDataFinal)
     }
 
     return (
@@ -89,8 +82,8 @@ export default function Newincident() {
                     <input
                         type="date"
                         placeholder="Data final"
-                        value={dataFinal}
-                        onChange={e => setDataFinal(e.target.value)}
+                        value={date}
+                        onChange={e => setDate(e.target.value)}
                     />
                     : null }                  
                     <button className="button" type="submit">Cadastrar</button>

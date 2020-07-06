@@ -21,8 +21,8 @@ export default StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        marginBottom: 16,
-        marginTop: 48,
+        marginBottom: 5,
+        marginTop: 30,
         color: '#13131a',
         fontWeight: '700'
     },
@@ -60,5 +60,36 @@ export default StyleSheet.create({
         color: '#00cc66',
         fontSize: 15,
         fontWeight: '700'
+    },
+    textInput: {
+        height: 30,
+        borderWidth:1,
+        borderColor: '#cecece',
+        marginBottom:15,
+        marginHorizontal:10
+    },
+    action: {
+        backgroundColor: '#00cc66',
+        borderRadius: 8,
+        height: 40,
+        width: '48%',
+        justifyContent: 'center',
+        alignItems: 'center', 
+    },
+    actionText: {
+        color: '#FFF',
+        fontSize: 15,
+        fontWeight: '700'
+    },
+    // contactBox: {
+    //     padding: 10,
+    //     borderRadius: 8,
+    //     backgroundColor: '#FFF',
+    //     marginTop: 15,
+    // },
+    actions: {
+        marginTop: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     }
 })
